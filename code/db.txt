@@ -1,0 +1,108 @@
+use university
+
+db.createCollection(users)
+db.createCollection("users")
+db.user.insertOne({ name: "Raj", email:"raj@gmail.com"})
+
+use task-manager
+
+db.createCollection("tasks")
+
+db.tasks.insertOne({
+  task : "Learning MongoDB",
+  createdAT : "27TH Feb, 2026",
+  deadline : "28TH Feb, 2026",
+  user : "Raj",
+  isCompleted : false
+  
+})
+
+cls
+
+db.tasks.insertMany([
+  {
+    tasks:"workout",
+    createdAT:"27TH Feb, 2026",
+    deadline: "28TH Feb,2026",
+    user:"Raj",
+    iscompleted: false
+  },
+  {
+    tasks:"WK",
+    createdAT:"2568",
+    deadline:"2569",
+    user:"SKT",
+    iscompleted:true
+  },
+])
+
+
+db.tasks.find()
+db.tasks.insertone({
+  task:"Teaching",
+  createdAT:"25th feb,2026",
+  deadlineAT:"26th feb,2026",
+  user:"SKT",
+})
+
+db.tasks.insertOne({
+  task:"Teaching",
+  createdAT:"25th feb,2026",
+  deadline:"26th feb,2026",
+  user:"SKT",
+  iscompleted:true
+})
+
+db.tasks.find({ user:"SKT"})
+
+db.tasks.updateOne({user:"SKT"},{
+  $set: {
+    deadline:"29th feb,2026"
+  }
+})
+
+db.tasks.updateOne({user:"Raj"},{
+  $set: {
+    deadline:"29th feb,2026"
+  }
+})
+
+
+
+db.tasks.updateMany({user:"Raj"},{
+  $set: {
+    deadline:"29th feb,2026"
+  }
+})
+
+db.tasks.updateMany({user:"Raj"},{
+  $set: {
+    deadline:"29th feb,2026"
+  }
+})
+
+
+db.tasks.deleteOne({task: "Learning MongoDB"})
+
+
+db.tasks.updateMany({$or:[
+  {task: "workout",user: "Raj"}
+  {task: "Teaching", user: "SKT"}
+  
+ ] }, { $set: { iscompleted: true }} )
+
+
+
+db.tasks.deleteMany({ iscompleted: true })
+
+
+
+ds.tasks.find({procastinated: {$gt : 0}})
+
+
+
+db.tasks.find({procastinated: {$gt : 3 }})
+
+
+
+db["tasks"].find()
